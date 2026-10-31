@@ -419,87 +419,46 @@ body {
 /* GALLERY SECTION */
 
 .gallery {
-    padding: 80px 0 90px;
-    background: white;
-    overflow: hidden;
-}
-
-.g-heading {
-    text-align: center;
-    margin-bottom: 65px;
-}
-
-.g-heading h2 {
-    color: #55ad70;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.g-heading h2 i {
-    color: #26364d;
-    margin-right: 8px;
-}
-
-.g-heading p {
-    color: #999;
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-/* Gallery rows */
-
-.g-container {
     width: 100%;
+    padding: 70px 20px;
+    text-align: center;
     overflow: hidden;
 }
 
-.g-row {
-    display: flex;
+.gy-heading {
+    font-size: 35px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.gy-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.gy-row {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
     justify-content: center;
-    align-items: center;
-    gap: 8px;
-    width: max-content;
-    margin: 0 auto;
+    gap: 5px;
 }
 
-/* Second row creates the diamond arrangement */
-
-.g-row-two {
-    margin-top: -48px;
-    margin-left: calc(50% - 570px);
-    transform: translateX(95px);
+.gy-bottom {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    max-width: 690px;
+    margin: 5px auto 0;
 }
 
-/* Hexagon shape with dark border */
+.gy-item {
+    width: 100%;
+    aspect-ratio: 180 / 155;
+    padding: 3px;
+    background-color: black;
+    overflow: hidden;
 
-.g-item{
-  width: 200px;
-  height: 200px;
-  background: #000; /* Black border */
-  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-  padding: 6px; /* Border ki thickness */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Image inside hexagon */
-
-.g-item img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-}
-
-/* Hover overlay */
-
-.g-overlay {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    right: 5px;
-    bottom: 5px;
     clip-path: polygon(
         25% 0,
         75% 0,
@@ -508,39 +467,94 @@ body {
         25% 100%,
         0 50%
     );
-    background: rgba(20, 35, 55, 0.75);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
 }
 
-.g-overlay h3 {
-    font-size: 16px;
-    margin-bottom: 6px;
+.gy-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    clip-path: polygon(
+        25% 0,
+        75% 0,
+        100% 50%,
+        75% 100%,
+        25% 100%,
+        0 50%
+    );
+
+    transition: transform 0.4s ease;
 }
 
-.g-overlay p {
-    font-size: 13px;
+.gy-item:hover img {
+    transform: scale(1.12);
+}
+/* TABLET - 1000px */
+
+@media screen and (max-width: 1000px) {
+
+    .gy-container {
+        max-width: 750px;
+    }
+
+    .gy-row {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .gy-bottom {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        max-width: 600px;
+    }
 }
 
-/* Hover effects */
+/* MOBILE - 750px */
 
-.g-item:hover {
-    transform: scale(1.07);
-    z-index: 5;
+@media screen and (max-width: 750px) {
+
+    .gallery {
+        padding: 50px 15px;
+    }
+
+    .gy-heading {
+        font-size: 30px;
+        margin-bottom: 35px;
+    }
+
+    .gy-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .gy-bottom {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        max-width: 100%;
+        margin-top: 8px;
+    }
+
+    .gy-item {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 180 / 155;
+         }
 }
 
-.g-item:hover img {
-    transform: scale(1.15);
-}
+/* SMALL MOBILE */
 
-.g-item:hover .gallery-overlay {
-    opacity: 1;
+@media screen and (max-width: 400px) {
+
+    .gallery {
+        padding: 40px 10px;
+    }
+
+    .gy-row {
+        gap: 5px;
+    }
+
+    .gy-bottom {
+        gap: 5px;
+    }
+
 }
 
 /* Responsive */
